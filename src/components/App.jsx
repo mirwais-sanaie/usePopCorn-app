@@ -1,7 +1,9 @@
+import Navbar from "./NavBarCom/Navbar";
+
 function App() {
   return (
     <div>
-      <h1>Hello world</h1>
+      <Navbar />
     </div>
   );
 }

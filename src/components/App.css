@@ -8,4 +8,40 @@
   overflow-y: scroll;
   border-radius: 8px;
   max-height: 100%;
+  position: relative;
+}
+.toggle-show {
+  background-color: black;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  padding-bottom: 6px;
+  position: absolute;
+  top: 7px;
+  right: 4px;
+}
+.list-movie {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+.list-movie li {
+  padding: 15px 25px;
+  border-bottom: 1px solid #212529;
+  transition: all 0.2s;
+  cursor: pointer;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.list-movie li:hover {
+  background-color: #343a40;
+}
+.movie-img-list {
+  width: 40px;
+  height: 60px;
 }

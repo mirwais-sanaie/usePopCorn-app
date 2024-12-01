@@ -2,7 +2,7 @@ function MovieList() {
   return (
     <div className="box lg:w-[26rem] h-full">
       <button className="toggle-show">&#8722;</button>
-      <ul className="list-movie">
+      <ul className="list-movie hover-color">
         <li>
           <img src="./test.jpg" className="movie-img-list" alt="" />
           <div className="flex flex-col text-start ps-5 space-y-2">

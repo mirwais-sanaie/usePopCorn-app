@@ -56,7 +56,7 @@ function WatchList() {
                       <span>23 min</span>
                     </p>
                   </div>
-                  <button class="btn-delete absolute lg:right-14 right-5">
+                  <button className="btn-delete absolute lg:right-14 right-5">
                     X
                   </button>
                 </div>

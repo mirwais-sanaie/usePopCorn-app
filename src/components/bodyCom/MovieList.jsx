@@ -10,23 +10,22 @@ function MovieList({ movieName }) {
 
   useEffect(
     function () {
-      if (movieName.length > 3) {
-        async function getData() {
-          try {
-            const res = await fetch(
-              `http://www.omdbapi.com/?apikey=${key}&s=${movieName}`
-            );
-            const data = await res.json();
-            console.log(data);
-            setResultMoives([...resultMoives, data]);
-          } catch (e) {
-            console.log(e);
-          }
+      async function getData() {
+        try {
+          const res = await fetch(
+            `http://www.omdbapi.com/?apikey=${key}&s=${movieName}`
+          );
+          const data = await res.json();
+          console.log(data.Search);
+          setResultMoives([data.Search]);
+          console.log(resultMoives);
+        } catch (e) {
+          console.log(e);
         }
-        getData();
       }
+      getData();
     },
-    [movieName, resultMoives]
+    [movieName]
   );
 
   return (
@@ -41,7 +40,7 @@ function MovieList({ movieName }) {
         <ul className="list-movie">
           {resultMoives.map((movie) => (
             <li>
-              <img src="./test.jpg" className="movie-img-list" alt="" />
+              {/* <img src="./test.jpg" className="movie-img-list" alt="" /> */}
               <div className="flex flex-col text-start ps-5 space-y-2">
                 <h3 className=" text-lg font-bold">Title of movie</h3>
                 <p>

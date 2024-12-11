@@ -37,7 +37,7 @@
   justify-content: start;
   align-items: center;
 }
-.list-movie li:hover {
+.hover-effect:hover {
   background-color: #343a40;
   cursor: pointer;
 }
@@ -57,4 +57,9 @@
   width: 22px;
   height: 22px;
   border-radius: 50%;
+}
+.loading {
+  margin-top: 30px;
+  font-weight: 900;
+  font-size: 20px;
 }

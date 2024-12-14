@@ -63,3 +63,18 @@
   font-weight: 900;
   font-size: 20px;
 }
+
+/* //////////////////////////   */
+.back-icon {
+  width: 35px;
+  height: 35px;
+  background-color: #fff;
+  border-radius: 50%;
+  font-size: 30px;
+  cursor: pointer;
+  color: #212529;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-bottom: 7px;
+}

@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 
-function MovieList({ movieName }) {
+function MovieList({
+  movieName,
+  resultMoives,
+  setResultMoives,
+  setSelectedMovie,
+}) {
   const [showPanel, setShowPanel] = useState(true);
-  const [resultMoives, setResultMoives] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
@@ -57,10 +61,22 @@ function MovieList({ movieName }) {
       {showPanel && !loading && (
         <ul className="list-movie">
           {resultMoives?.map((movie) => (
-            <li key={movie.imdbID} className="hover-effect">
-              <img src={`${movie.Poster}`} className="movie-img-list" alt="" />
+            <li
+              onClick={() => setSelectedMovie(movie.imdbID)}
+              key={movie.imdbID}
+              className="hover-effect"
+            >
+              <img
+                src={`${movie.Poster}`}
+                className="movie-img-list"
+                alt={
+                  movie.Poster !== "N/A"
+                    ? `Poster for ${movie.Title}`
+                    : `No image`
+                }
+              />
               <div className="flex flex-col text-start ps-5 space-y-2">
-                <h2 className=" text-lg font-bold">{movie.Title}</h2>
+                <p className="text-lg font-bold">{movie.Title}</p>
                 <p>
                   <span>🗓</span> {movie.Year}
                 </p>

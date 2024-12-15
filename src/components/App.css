@@ -78,3 +78,18 @@
   align-items: center;
   padding-bottom: 7px;
 }
+.movie-s-content {
+  display: flex;
+  justify-content: start;
+  background-color: #343a40;
+  gap: 25px;
+}
+.opened-img {
+  width: 39%;
+}
+.detail-opened {
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}

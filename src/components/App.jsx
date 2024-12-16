@@ -9,6 +9,7 @@ function App() {
   const [resultMoives, setResultMoives] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const lengthMovies = resultMoives?.length;
+
   return (
     <div>
       <Navbar
@@ -26,6 +27,7 @@ function App() {
         <WatchList
           selectedMovie={selectedMovie}
           setSelectedMovie={setSelectedMovie}
+          resultMoives={resultMoives}
         />
       </div>
     </div>

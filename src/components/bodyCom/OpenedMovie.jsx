@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import StarRating from "./StarRating";
 
 function OpenedMovie({ setSelectedMovie, selectedMovie }) {
   const [movieDetail, setMoiveDetail] = useState([]);
@@ -35,7 +36,7 @@ function OpenedMovie({ setSelectedMovie, selectedMovie }) {
     <div className="relative">
       <button
         onClick={() => setSelectedMovie(null)}
-        className="back-icon absolute left-2 top-2"
+        className="back-icon absolute left-1 top-1"
       >
         <span>&#8592;</span>
       </button>
@@ -57,6 +58,20 @@ function OpenedMovie({ setSelectedMovie, selectedMovie }) {
             ⭐️ {movieDetail.imdbRating} IMDb rating
           </p>
         </div>
+      </div>
+      <div className="movie-b-content grid gap-y-4 text-sm py-10 px-8 text-[#DEE2CA] text-left">
+        {/* stars components  */}
+        <div>
+          <StarRating />
+        </div>
+
+        <p>{movieDetail.Plot}</p>
+        <p>Actors : {movieDetail.Actors}</p>
+        <p>
+          {movieDetail.Director !== "N/A"
+            ? `Directed by :${movieDetail.Director}`
+            : null}
+        </p>
       </div>
     </div>
   );

@@ -1,4 +1,36 @@
-function OpenedMovie({ setSelectedMovie, selectedMovie, resultMoives }) {
+import { useEffect, useState } from "react";
+
+function OpenedMovie({ setSelectedMovie, selectedMovie }) {
+  const [movieDetail, setMoiveDetail] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
+
+  useEffect(
+    function () {
+      async function getFullDetail() {
+        try {
+          setLoading(true);
+          const response = await fetch(
+            `http://www.omdbapi.com/?apikey=f84fc31d&i=${selectedMovie}`
+          );
+          const data = await response.json();
+          setMoiveDetail(data);
+          console.log(data);
+          setLoading(false);
+        } catch (err) {
+          console.log(err.message);
+        }
+      }
+
+      getFullDetail();
+    },
+    [selectedMovie]
+  );
+
+  if (loading) {
+    return <h1 className="loading">Loading...</h1>;
+  }
+
   return (
     <div className="relative">
       <button
@@ -8,19 +40,24 @@ function OpenedMovie({ setSelectedMovie, selectedMovie, resultMoives }) {
         <span>&#8592;</span>
       </button>
       {/* <h1>Hello world ID : {selectedMovie}</h1> */}
-      {resultMoives.map((movie) =>
-        selectedMovie === movie.imdbID ? (
-          <div className="movie-s-content" key={movie.imdbID}>
-            <img className="opened-img" src={`${movie.Poster}`} alt="" />
-            <div className="detail-opened py-3">
-              <h1 className="font-bold text-xl mb-7">{movie.Title}</h1>
-              <p className="mb-3 text-sm">25 Jun 2015 • 119 min</p>
-              <p className="mb-3 text-sm">Documentary</p>
-              <p className="mb-3 text-sm">⭐️ 8.0 IMDb rating</p>
-            </div>
-          </div>
-        ) : null
-      )}
+
+      <div className="movie-s-content">
+        <img
+          className="opened-img"
+          src={`${movieDetail.Poster}`}
+          alt="not found"
+        />
+        <div className="detail-opened py-3">
+          <h1 className="font-bold text-xl mb-7">{movieDetail.Title}</h1>
+          <p className="mb-3 text-sm">
+            {movieDetail.Released} - {movieDetail.Runtime}
+          </p>
+          <p className="mb-3 text-sm">{movieDetail.Genre}</p>
+          <p className="mb-3 text-sm">
+            ⭐️ {movieDetail.imdbRating} IMDb rating
+          </p>
+        </div>
+      </div>
     </div>
   );
 }

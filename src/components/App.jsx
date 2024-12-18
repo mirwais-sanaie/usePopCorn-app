@@ -27,7 +27,6 @@ function App() {
         <WatchList
           selectedMovie={selectedMovie}
           setSelectedMovie={setSelectedMovie}
-          resultMoives={resultMoives}
         />
       </div>
     </div>

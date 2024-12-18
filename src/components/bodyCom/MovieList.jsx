@@ -23,7 +23,6 @@ function MovieList({
             `http://www.omdbapi.com/?apikey=${key}&s=${movieName}`
           );
           const data = await res.json();
-          console.log(data.Search);
           setResultMoives(data.Search);
           setLoading(false);
         } catch (error) {

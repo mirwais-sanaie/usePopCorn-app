@@ -1,7 +1,7 @@
 import { useState } from "react";
 import OpenedMovie from "./OpenedMovie";
 
-function WatchList({ selectedMovie, setSelectedMovie, resultMoives }) {
+function WatchList({ selectedMovie, setSelectedMovie }) {
   const [showPanel, setShowPanel] = useState(true);
 
   return (
@@ -19,7 +19,6 @@ function WatchList({ selectedMovie, setSelectedMovie, resultMoives }) {
             <OpenedMovie
               setSelectedMovie={setSelectedMovie}
               selectedMovie={selectedMovie}
-              resultMoives={resultMoives}
             />
           ) : (
             <div>

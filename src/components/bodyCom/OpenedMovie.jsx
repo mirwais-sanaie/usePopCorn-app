@@ -60,8 +60,8 @@ function OpenedMovie({ setSelectedMovie, selectedMovie }) {
       </div>
       <div className="movie-b-content grid gap-y-4 text-sm py-10 px-8 text-[#DEE2CA] text-left">
         {/* stars components  */}
-        <div>
-          <StarRating />
+        <div className="bg-[#343A40] p-5 rounded-lg">
+          <StarRating size={10} />
         </div>
 
         <p>{movieDetail.Plot}</p>

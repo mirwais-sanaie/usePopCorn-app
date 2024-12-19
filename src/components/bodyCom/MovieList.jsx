@@ -38,7 +38,7 @@ function MovieList({
 
       getData();
     },
-    [movieName]
+    [movieName, setResultMoives]
   );
 
   return (

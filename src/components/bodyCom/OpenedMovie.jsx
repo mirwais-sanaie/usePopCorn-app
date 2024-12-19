@@ -4,7 +4,6 @@ import StarRating from "./StarRating";
 function OpenedMovie({ setSelectedMovie, selectedMovie }) {
   const [movieDetail, setMoiveDetail] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   useEffect(
     function () {

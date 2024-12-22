@@ -4,6 +4,7 @@ import { FaStar } from "react-icons/fa";
 function StarRating({ size = 10 }) {
   const [hovering, setHovering] = useState(0);
   const [onMouseOver, setOnMouseOver] = useState(false);
+  const [activeStar, setActiveStar] = useState(0);
 
   return (
     <div
@@ -18,12 +19,16 @@ function StarRating({ size = 10 }) {
               onMouseOver={() => {
                 setHovering((hovering) => (hovering = i + 1));
               }}
+              onClick={() =>
+                setActiveStar((activeStar) => (activeStar = i + 1))
+              }
               key={i}
               size={21}
               fill={onMouseOver && i <= hovering - 1 ? "#fcc419" : "none"}
               style={{
                 stroke: "#fcc419", // Border color
-                strokeWidth: "30", // Border thickness
+                strokeWidth: "30",
+                cursor: "pointer",
               }}
             />
           );

@@ -4,6 +4,7 @@ import StarRating from "./StarRating";
 function OpenedMovie({ setSelectedMovie, selectedMovie }) {
   const [movieDetail, setMoiveDetail] = useState([]);
   const [loading, setLoading] = useState(false);
+  const [activeStar, setActiveStar] = useState(0);
 
   useEffect(
     function () {
@@ -61,24 +62,30 @@ function OpenedMovie({ setSelectedMovie, selectedMovie }) {
       <div className="movie-b-content grid gap-y-4 text-sm py-10 px-8 text-[#DEE2CA] text-left">
         {/* stars components  */}
         <div className="bg-[#343A40] p-5 rounded-lg">
-          <StarRating size={10} />
-          <button className="btn-add">
-            <svg
-              aria-hidden="true"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
-                stroke-linejoin="round"
-                stroke-linecap="round"
-              ></path>
-            </svg>
-            Add Bookmark
-          </button>
+          <StarRating
+            size={10}
+            activeStar={activeStar}
+            setActiveStar={setActiveStar}
+          />
+          {activeStar !== 0 && (
+            <button className="btn-add">
+              <svg
+                aria-hidden="true"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0111.186 0z"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                ></path>
+              </svg>
+              Add to list
+            </button>
+          )}
         </div>
 
         <p>{movieDetail.Plot}</p>

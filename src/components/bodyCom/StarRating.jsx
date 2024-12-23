@@ -1,10 +1,9 @@
 import { useState } from "react";
 import { FaStar } from "react-icons/fa";
 
-function StarRating({ size = 10 }) {
+function StarRating({ size = 10, activeStar, setActiveStar }) {
   const [hovering, setHovering] = useState(0);
   const [onMouseOver, setOnMouseOver] = useState(false);
-  const [activeStar, setActiveStar] = useState(0);
 
   return (
     <div

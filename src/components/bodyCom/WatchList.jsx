@@ -9,6 +9,11 @@ function WatchList({
 }) {
   const [showPanel, setShowPanel] = useState(true);
 
+  function handleDeleteItem(id) {
+    console.log(savedMovie);
+    setSavedMovie(savedMovie.filter((item) => item.imdbID !== id));
+  }
+
   return (
     <div className="box lg:w-[26rem] h-full">
       <button
@@ -50,9 +55,10 @@ function WatchList({
                   </p>
                 </div>
               </div>
+
               <ul className="list-movie">
                 {savedMovie.map((movie) => (
-                  <li className="relative">
+                  <li className="relative" key={movie.imdbID}>
                     <img
                       src={`${movie.Poster}`}
                       className="movie-img-list"
@@ -75,7 +81,10 @@ function WatchList({
                             <span>{movie.Runtime}</span>
                           </p>
                         </div>
-                        <button className="btn-delete absolute lg:right-14 right-5">
+                        <button
+                          onClick={() => handleDeleteItem(movie.imdbID)}
+                          className="btn-delete absolute lg:right-14 right-5"
+                        >
                           X
                         </button>
                       </div>

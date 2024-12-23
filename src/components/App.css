@@ -107,3 +107,41 @@
   flex-direction: column;
   justify-content: center;
 }
+
+.btn-add {
+  border: none;
+  display: flex;
+  padding: 0.75rem 3rem;
+  background-color: #6741d9;
+  margin-top: 15px;
+  margin-inline: auto;
+  color: #ffffff;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-align: center;
+  text-transform: uppercase;
+  vertical-align: middle;
+  align-items: center;
+  border-radius: 0.5rem;
+  user-select: none;
+  gap: 0.75rem;
+  box-shadow: 0 4px 6px -1px #5648ec31, 0 2px 4px -1px #7448ec17;
+  transition: all 0.6s ease;
+}
+
+.btn-add:hover {
+  box-shadow: 0 10px 15px -3px #6648ec4f, 0 4px 6px -2px #6948ec17;
+}
+
+.btn-add:focus,
+.btn-add:active {
+  opacity: 0.85;
+  box-shadow: none;
+}
+
+.btn-add svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}

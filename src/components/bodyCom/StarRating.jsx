@@ -24,7 +24,13 @@ function StarRating({ size = 10 }) {
               }
               key={i}
               size={21}
-              fill={onMouseOver && i <= hovering - 1 ? "#fcc419" : "none"}
+              fill={
+                onMouseOver && i < hovering
+                  ? "#fcc419"
+                  : !onMouseOver && i < activeStar
+                  ? "#fcc419"
+                  : "transparent"
+              }
               style={{
                 stroke: "#fcc419", // Border color
                 strokeWidth: "30",
@@ -35,7 +41,7 @@ function StarRating({ size = 10 }) {
         })}
       </span>
       <span className="font-semibold text-[17px] text-[#fcc419]">
-        {onMouseOver ? hovering : null}
+        {onMouseOver ? hovering : activeStar}
       </span>
     </div>
   );

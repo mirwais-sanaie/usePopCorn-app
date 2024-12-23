@@ -1,7 +1,12 @@
 import { useState } from "react";
 import OpenedMovie from "./OpenedMovie";
 
-function WatchList({ selectedMovie, setSelectedMovie }) {
+function WatchList({
+  selectedMovie,
+  setSelectedMovie,
+  setSavedMovie,
+  savedMovie,
+}) {
   const [showPanel, setShowPanel] = useState(true);
 
   return (
@@ -19,6 +24,8 @@ function WatchList({ selectedMovie, setSelectedMovie }) {
             <OpenedMovie
               setSelectedMovie={setSelectedMovie}
               selectedMovie={selectedMovie}
+              savedMovie={savedMovie}
+              setSavedMovie={setSavedMovie}
             />
           ) : (
             <div>
@@ -44,31 +51,37 @@ function WatchList({ selectedMovie, setSelectedMovie }) {
                 </div>
               </div>
               <ul className="list-movie">
-                <li className="relative">
-                  <img src="./test.jpg" className="movie-img-list" alt="" />
-                  <div className="flex flex-col text-start ps-5 space-y-2">
-                    <h3 className=" text-lg font-bold">Title of movie</h3>
-                    <div className="flex justify-between">
-                      <div className="flex space-x-5 ">
-                        <p>
-                          <span>⭐️</span>
-                          <span>8.50</span>
-                        </p>
-                        <p>
-                          <span>🌟</span>
-                          <span>8.50</span>
-                        </p>
-                        <p>
-                          <span>⏳</span>
-                          <span>23 min</span>
-                        </p>
+                {savedMovie.map((movie) => (
+                  <li className="relative">
+                    <img
+                      src={`${movie.Poster}`}
+                      className="movie-img-list"
+                      alt=""
+                    />
+                    <div className="flex flex-col text-start ps-5 space-y-2">
+                      <h3 className=" text-lg font-bold">{movie.Title}</h3>
+                      <div className="flex justify-between">
+                        <div className="flex space-x-5 ">
+                          <p>
+                            <span>⭐️</span>
+                            <span>{movie.imdbRating}</span>
+                          </p>
+                          <p>
+                            <span>🌟</span>
+                            <span>8.50</span>
+                          </p>
+                          <p>
+                            <span>⏳</span>
+                            <span>{movie.Runtime}</span>
+                          </p>
+                        </div>
+                        <button className="btn-delete absolute lg:right-14 right-5">
+                          X
+                        </button>
                       </div>
-                      <button className="btn-delete absolute lg:right-14 right-5">
-                        X
-                      </button>
                     </div>
-                  </div>
-                </li>
+                  </li>
+                ))}
               </ul>
             </div>
           )}

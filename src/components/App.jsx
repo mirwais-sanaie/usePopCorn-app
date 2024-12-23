@@ -8,6 +8,7 @@ function App() {
   const [movieName, setMovieName] = useState("");
   const [resultMoives, setResultMoives] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
+  const [savedMovie, setSavedMovie] = useState([]);
   const lengthMovies = resultMoives?.length;
 
   return (
@@ -27,6 +28,8 @@ function App() {
         <WatchList
           selectedMovie={selectedMovie}
           setSelectedMovie={setSelectedMovie}
+          savedMovie={savedMovie}
+          setSavedMovie={setSavedMovie}
         />
       </div>
     </div>

@@ -13,6 +13,8 @@ function OpenedMovie({
 
   function handleSaveMovie(movie) {
     setSavedMovie([...savedMovie, movie]);
+    setSelectedMovie((selectedMovie) => !selectedMovie);
+    setActiveStar(0);
     console.log(movie);
   }
 
@@ -51,7 +53,6 @@ function OpenedMovie({
       >
         <span>&#8592;</span>
       </button>
-      {/* <h1>Hello world ID : {selectedMovie}</h1> */}
 
       <div className="movie-s-content">
         <img

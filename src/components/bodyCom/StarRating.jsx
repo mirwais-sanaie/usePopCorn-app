@@ -15,8 +15,11 @@ function StarRating({ size = 10, activeStar, setActiveStar }) {
         {Array.from({ length: size }, (_, i) => {
           return (
             <FaStar
-              onMouseOver={() => {
+              onMouseEnter={() => {
                 setHovering((hovering) => (hovering = i + 1));
+              }}
+              onMouseLeave={() => {
+                setHovering((hovering) => (hovering = 0));
               }}
               onClick={() =>
                 setActiveStar((activeStar) => (activeStar = i + 1))
@@ -40,7 +43,12 @@ function StarRating({ size = 10, activeStar, setActiveStar }) {
         })}
       </span>
       <span className="font-semibold text-[17px] text-[#fcc419]">
-        {onMouseOver ? hovering : activeStar}
+        {hovering === 0 && activeStar === 0
+          ? null
+          : onMouseOver
+          ? hovering
+          : activeStar}
+        {}
       </span>
     </div>
   );

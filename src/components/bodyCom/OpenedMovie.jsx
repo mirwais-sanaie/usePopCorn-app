@@ -11,15 +11,21 @@ function OpenedMovie({
   const [loading, setLoading] = useState(false);
   const [activeStar, setActiveStar] = useState(0);
 
+  const isMovieSaved = savedMovie.some(
+    (saved) => saved.imdbID === movieDetail?.imdbID
+  );
+
   function handleSaveMovie(movie) {
-    setSavedMovie([...savedMovie, movie]);
-    setSelectedMovie((selectedMovie) => !selectedMovie);
-    setActiveStar(0);
-    console.log(movie);
+    if (!isMovieSaved) {
+      setSavedMovie([...savedMovie, movie]);
+      setSelectedMovie(null);
+      setActiveStar(0);
+    }
   }
 
   useEffect(
     function () {
+      if (!selectedMovie) return;
       async function getFullDetail() {
         try {
           setLoading(true);
@@ -29,7 +35,6 @@ function OpenedMovie({
           );
           const data = await response.json();
           setMoiveDetail(data);
-          console.log(data);
           setLoading(false);
         } catch (err) {
           console.log(err.message);
@@ -79,7 +84,7 @@ function OpenedMovie({
             activeStar={activeStar}
             setActiveStar={setActiveStar}
           />
-          {activeStar !== 0 && (
+          {!isMovieSaved && activeStar !== 0 && (
             <button
               className="btn-add"
               onClick={() => handleSaveMovie(movieDetail)}

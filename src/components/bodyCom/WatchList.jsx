@@ -39,7 +39,7 @@ function WatchList({
                 <div className="flex lg:space-x-5 space-x-3 text-sm lg:text-base">
                   <p>
                     <span>#️⃣</span>
-                    <span>2 movies</span>
+                    <span>{savedMovie.length} movies</span>
                   </p>
                   <p>
                     <span>⭐️</span>

@@ -17,8 +17,10 @@ function OpenedMovie({
 
   function handleSaveMovie(movie) {
     if (!isMovieSaved) {
-      setSavedMovie([...savedMovie, movie]);
+      const movieWithRating = { ...movie, userRating: activeStar };
+      setSavedMovie([...savedMovie, movieWithRating]);
       setSelectedMovie(null);
+      console.log(savedMovie);
       setActiveStar(0);
     }
   }
@@ -79,11 +81,18 @@ function OpenedMovie({
       <div className="movie-b-content grid gap-y-4 text-sm py-10 px-8 text-[#DEE2CA] text-left">
         {/* stars components  */}
         <div className="bg-[#343A40] p-5 rounded-lg">
-          <StarRating
-            size={10}
-            activeStar={activeStar}
-            setActiveStar={setActiveStar}
-          />
+          {isMovieSaved && (
+            <p>You rated {savedMovie.userRating} this movie before</p> //notice here
+          )}
+
+          {!isMovieSaved && (
+            <StarRating
+              size={10}
+              activeStar={activeStar}
+              setActiveStar={setActiveStar}
+            />
+          )}
+
           {!isMovieSaved && activeStar !== 0 && (
             <button
               className="btn-add"

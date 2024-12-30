@@ -9,6 +9,20 @@ function WatchList({
 }) {
   const [showPanel, setShowPanel] = useState(true);
 
+  // need to work
+
+  const totalUserRating = savedMovie
+    ?.map((el) => el.userRating)
+    .reduce((acc, cur) => acc + cur);
+
+  const totalMins = savedMovie
+    ?.map((el) => el.Runtime)
+    .reduce((acc, cur) => acc + cur);
+
+  const totalStars = savedMovie
+    ?.map((el) => el.imdbRating)
+    .reduce((acc, cur) => acc + cur);
+
   function handleDeleteItem(id) {
     console.log(savedMovie);
     setSavedMovie(savedMovie.filter((item) => item.imdbID !== id));
@@ -43,15 +57,15 @@ function WatchList({
                   </p>
                   <p>
                     <span>⭐️</span>
-                    <span>8.50</span>
+                    <span>{totalStars}</span>
                   </p>
                   <p>
                     <span>🌟</span>
-                    <span>8.50</span>
+                    <span>{totalUserRating}</span>
                   </p>
                   <p>
                     <span>⏳</span>
-                    <span>23 min</span>
+                    <span>{totalMins}</span>
                   </p>
                 </div>
               </div>

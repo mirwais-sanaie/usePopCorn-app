@@ -82,7 +82,13 @@ function OpenedMovie({
         {/* stars components  */}
         <div className="bg-[#343A40] p-5 rounded-lg">
           {isMovieSaved && (
-            <p>You rated {savedMovie.userRating} this movie before</p> //notice here
+            <p>
+              You rated
+              {savedMovie.map((el) =>
+                el.imdbID === selectedMovie ? ` - 🌟${el.userRating} - ` : null
+              )}
+              this movie before
+            </p> //notice here
           )}
 
           {!isMovieSaved && (

@@ -74,7 +74,7 @@ function WatchList({
                           </p>
                           <p>
                             <span>🌟</span>
-                            <span>8.50</span>
+                            <span>{movie.userRating}</span>
                           </p>
                           <p>
                             <span>⏳</span>

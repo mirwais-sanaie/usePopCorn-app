@@ -9,6 +9,12 @@ function App() {
   const [resultMoives, setResultMoives] = useState([]);
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [savedMovie, setSavedMovie] = useState([]);
+  const [watchlistStats, setWatchlistStats] = useState({
+    totalUserRatings: 0,
+    totalImdbRatings: 0,
+    totalRuntime: 0,
+    count: 0,
+  });
   const lengthMovies = resultMoives?.length;
 
   return (
@@ -30,6 +36,8 @@ function App() {
           setSelectedMovie={setSelectedMovie}
           savedMovie={savedMovie}
           setSavedMovie={setSavedMovie}
+          setWatchlistStats={setWatchlistStats}
+          watchlistStats={watchlistStats}
         />
       </div>
     </div>

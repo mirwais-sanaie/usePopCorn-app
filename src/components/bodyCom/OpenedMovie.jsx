@@ -6,6 +6,8 @@ function OpenedMovie({
   selectedMovie,
   setSavedMovie,
   savedMovie,
+  userRatings,
+  setWatchlistStats,
 }) {
   const [movieDetail, setMoiveDetail] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -20,7 +22,14 @@ function OpenedMovie({
       const movieWithRating = { ...movie, userRating: activeStar };
       setSavedMovie([...savedMovie, movieWithRating]);
       setSelectedMovie(null);
-      console.log(savedMovie);
+
+      setWatchlistStats((previousStats) => ({
+        totalUserRating: previousStats.totalUserRatings + activeStar,
+        totalImdbRatings:
+          previousStats.totalImdbRatings + parseFloat(movie.imdbRating),
+        totalRuntime: previousStats.totalRuntime + parseInt(movie.Runtime),
+        count: previousStats.count + 1,
+      }));
       setActiveStar(0);
     }
   }

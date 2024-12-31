@@ -1,27 +1,16 @@
 import { useState } from "react";
 import OpenedMovie from "./OpenedMovie";
+import WatchlistSummary from "./WatchlistSummary";
 
 function WatchList({
   selectedMovie,
   setSelectedMovie,
   setSavedMovie,
   savedMovie,
+  watchlistStats,
+  setWatchlistStats,
 }) {
   const [showPanel, setShowPanel] = useState(true);
-
-  // need to work
-
-  const totalUserRating = savedMovie
-    ?.map((el) => el.userRating)
-    .reduce((acc, cur) => acc + cur);
-
-  const totalMins = savedMovie
-    ?.map((el) => el.Runtime)
-    .reduce((acc, cur) => acc + cur);
-
-  const totalStars = savedMovie
-    ?.map((el) => el.imdbRating)
-    .reduce((acc, cur) => acc + cur);
 
   function handleDeleteItem(id) {
     console.log(savedMovie);
@@ -45,30 +34,11 @@ function WatchList({
               selectedMovie={selectedMovie}
               savedMovie={savedMovie}
               setSavedMovie={setSavedMovie}
+              setWatchlistStats={setWatchlistStats}
             />
           ) : (
             <div>
-              <div className="summary shadow-xl">
-                <h3 className="uppercase font-bold mb-4">Movie You watched</h3>
-                <div className="flex lg:space-x-5 space-x-3 text-sm lg:text-base">
-                  <p>
-                    <span>#️⃣</span>
-                    <span>{savedMovie.length} movies</span>
-                  </p>
-                  <p>
-                    <span>⭐️</span>
-                    <span>{totalStars}</span>
-                  </p>
-                  <p>
-                    <span>🌟</span>
-                    <span>{totalUserRating}</span>
-                  </p>
-                  <p>
-                    <span>⏳</span>
-                    <span>{totalMins}</span>
-                  </p>
-                </div>
-              </div>
+              <WatchlistSummary watchlistStats={watchlistStats} />
 
               <ul className="list-movie">
                 {savedMovie.map((movie) => (
@@ -79,7 +49,7 @@ function WatchList({
                       alt=""
                     />
                     <div className="flex flex-col text-start ps-5 space-y-2">
-                      <h3 className=" text-lg font-bold">{movie.Title}</h3>
+                      <h3 className="text-lg font-bold">{movie.Title}</h3>
                       <div className="flex justify-between">
                         <div className="flex space-x-5 ">
                           <p>

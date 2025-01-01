@@ -13,7 +13,6 @@ function WatchList({
   const [showPanel, setShowPanel] = useState(true);
 
   useEffect(() => {
-    // Recalculate stats whenever watchlist changes
     const newStats = savedMovie.reduce(
       (acc, movie) => {
         return {

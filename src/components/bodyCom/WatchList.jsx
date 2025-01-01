@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import OpenedMovie from "./OpenedMovie";
 import WatchlistSummary from "./WatchlistSummary";
 
@@ -11,6 +11,24 @@ function WatchList({
   setWatchlistStats,
 }) {
   const [showPanel, setShowPanel] = useState(true);
+
+  useEffect(() => {
+    // Recalculate stats whenever watchlist changes
+    const newStats = savedMovie.reduce(
+      (acc, movie) => {
+        return {
+          totalUserRatings: acc.totalUserRatings + (movie.userRating || 0),
+          totalImdbRatings:
+            acc.totalImdbRatings + (parseFloat(movie.imdbRating) || 0),
+          totalRuntime: acc.totalRuntime + (parseInt(movie.Runtime) || 0),
+          count: acc.count + 1,
+        };
+      },
+      { totalUserRatings: 0, totalImdbRatings: 0, totalRuntime: 0, count: 0 }
+    );
+
+    setWatchlistStats(newStats);
+  }, [savedMovie, setWatchlistStats]);
 
   function handleDeleteItem(id) {
     console.log(savedMovie);
